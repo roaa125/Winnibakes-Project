@@ -9,15 +9,103 @@ body {
   overflow-x: hidden;
 }
 
-.container {
+/* ================= NAVIGATION STYLES ================= */
+.navbar {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1000px;
-  height: 600px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80px; /* Aligns perfectly with your hero content text */
+  z-index: 100; /* Forces nav to stay on top of sliding cards */
+
+  /* Glassmorphism Effect */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-logo a {
+  font-family: system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+}
+
+.nav-links a {
+  font-family: system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 5px 0;
+}
+
+/* Hover & Active States */
+.nav-links a:hover,
+.nav-links a.active {
+  color: #ffffff;
+}
+
+/* Smooth underline effect on hover */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #f1743f; /* Matches your accent brand color */
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* Call To Action Button */
+.nav-btn {
+  font-family: system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #f1743f; /* Matches your arrow layout accent */
+  border: none;
+  padding: 10px 22px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #d95e2b; /* Slightly darker shade on hover */
+  transform: scale(1.05);
+}
+
+.container {
+  position: relative; /* Changed from absolute so it flows naturally in the document */
+  width: 100vw; /* Forces the banner to span 100% of the viewport width */
+  height: 80vh; /* Takes up 80% of the screen height (adjust to 100vh if you want it full-screen) */
   background: #f5f5f5;
-  box-shadow: 0 30px 50px #dbdbdb;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Softened the shadow for an edge-to-edge look */
+  overflow: hidden; /* Prevents any horizontal scrolling from rogue cards */
 }
 
 .slide {
@@ -138,13 +226,14 @@ body {
   }
 }
 
+/* Update the navigation button positioning to align nicely with the new layout */
 .button {
-  width: 100%;
-  text-align: center;
+  width: auto; /* Let it shrink to content size */
   position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 40px; /* Pushes buttons slightly higher up from the bottom edge */
+  left: 80px; /* Aligns them nicely under the text content on the left side */
+  transform: none; /* Removes the old center transform trick */
+  z-index: 10; /* Ensures the buttons stay clickable on top of everything else */
 }
 
 .button button {
